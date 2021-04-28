@@ -14,4 +14,4 @@ jobs:
       uses: andymckay/labeler@1.0.2
       with:
         add-labels: 'triage'
-        ignore-if-labeled: true
+        ignore-if-assigned: true
