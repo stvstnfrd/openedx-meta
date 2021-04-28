@@ -34,11 +34,10 @@ jobs:
       with:
         remove-labels: 'done,todo,triage'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Add to Doing list
-      uses: technote-space/create-project-card-action@v1
+    - uses: peter-evans/create-or-update-project-card@v1
       with:
-        PROJECT: backlog
-        COLUMN: Doing
+        project-name: backlog
+        column-name: Doing
   workflow-todo:
     if: github.event.label.name == 'todo'
     runs-on: ubuntu-latest
