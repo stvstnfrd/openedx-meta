@@ -91,7 +91,6 @@ When a day is ended:
 
 ## TODO
 
-- update labels if cards are moved within the projects
 - create automated/manual actions to snapshot daily standup, weekly sprint, etc.
 
 ## Notes
