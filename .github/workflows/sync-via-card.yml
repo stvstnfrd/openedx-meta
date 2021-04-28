@@ -15,6 +15,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'todo'
+        remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   backlog-doing:
     if: github.event.project_card.column_id == 14061509
@@ -26,6 +27,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'progress'
+        remove-labels: 'done,invalid,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   backlog-done:
     if: github.event.project_card.column_id == 14061510
@@ -37,6 +39,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'done'
+        remove-labels: 'invalid,progress,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   sprint-todo:
     if: github.event.project_card.column_id == 14068697
@@ -48,6 +51,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'todo'
+        remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   standup-doing:
     if: github.event.project_card.column_id == 14068701
@@ -59,6 +63,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'progress'
+        remove-labels: 'done,invalid,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   standup-done:
     if: github.event.project_card.column_id == 14068709
@@ -70,6 +75,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'done'
+        remove-labels: 'invalid,progress,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   standup-todo:
     if: github.event.project_card.column_id == 14068716
@@ -81,6 +87,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'todo'
+        remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   sprint-doing:
     if: github.event.project_card.column_id == 14068727
@@ -92,6 +99,7 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'progress'
+        remove-labels: 'done,invalid,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   sprint-done:
     if: github.event.project_card.column_id == 14068734
@@ -103,4 +111,5 @@ jobs:
     - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
         add-labels: 'done'
+        remove-labels: 'invalid,progress,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
