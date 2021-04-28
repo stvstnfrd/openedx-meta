@@ -11,6 +11,9 @@ workflows.
 
 ### Issues
 
+All TODO items/ideas are added as [Github Issues on this
+repository](https://github.com/stvstnfrd/openedx-meta/issues).
+
 ### Projects
 
 ## References
