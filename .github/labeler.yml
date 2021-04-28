@@ -1,0 +1,28 @@
+---
+BREAKING:
+ - '!:'
+ - 'BREAKING'
+build:
+  - 'build: '
+chore:
+  - 'chore: '
+docs:
+  - 'docs: '
+feat:
+  - 'feat: '
+fix:
+  - 'fix: '
+perf:
+  - 'perf: '
+refactor:
+  - 'refactor: '
+revert:
+  - 'revert: '
+style:
+  - 'style: '
+test:
+  - 'test: '
+temp:
+  - 'temp: '
+triage:
+  - 'triage: '
