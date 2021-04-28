@@ -39,6 +39,14 @@ jobs:
       with:
         project-name: backlog
         column-name: Doing
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: sprint
+        column-name: Doing
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: standup
+        column-name: Doing
   workflow-todo:
     if: github.event.label.name == 'todo'
     runs-on: ubuntu-latest
@@ -54,6 +62,14 @@ jobs:
       with:
         project-name: backlog
         column-name: TODO
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: sprint
+        column-name: TODO
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: standup
+        column-name: TODO
   workflow-triage:
     if: github.event.label.name == 'triage'
     runs-on: ubuntu-latest
@@ -68,4 +84,12 @@ jobs:
     - uses: peter-evans/create-or-update-project-card@v1
       with:
         project-name: backlog
+        column-name: TODO
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: sprint
+        column-name: TODO
+    - uses: peter-evans/create-or-update-project-card@v1
+      with:
+        project-name: standup
         column-name: TODO
