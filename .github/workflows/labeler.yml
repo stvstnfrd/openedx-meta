@@ -18,6 +18,11 @@ jobs:
       with:
         remove-labels: 'progress,todo,triage'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Close the issue
+      uses: peter-evans/close-issue@v1
+      with:
+        comment: |
+          Marked as done.
   workflow-progress:
     if: github.event.label.name == 'progress'
     runs-on: ubuntu-latest
