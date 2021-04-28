@@ -16,6 +16,11 @@ repository](https://github.com/stvstnfrd/openedx-meta/issues).
 
 ### Labels
 
+Automation of this project is driven by the addition of Github Labels.
+To mark an issue as done, set the label to [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone),
+etc. Everything else (closing the issue, updating labels, etc.)
+_should_ be handled automatically.
+
 ### Projects
 
 The following repository projects exist:
