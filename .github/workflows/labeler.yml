@@ -25,8 +25,9 @@ jobs:
       issues: write
     steps:
     - name: Mark as in-progress
-      uses: andymckay/labeler@1.0.2
+      uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
+        add-labels: 'progress'
         remove-labels: 'done, todo, triage'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
   workflow-todo:
