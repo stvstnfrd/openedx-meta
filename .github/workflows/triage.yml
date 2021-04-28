@@ -16,3 +16,8 @@ jobs:
         add-labels: 'triage'
         ignore-if-assigned: true
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Add to backlog
+      uses: technote-space/create-project-card-action@v1
+      with:
+        PROJECT: backlog
+        COLUMN: TODO
