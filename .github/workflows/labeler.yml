@@ -34,6 +34,11 @@ jobs:
       with:
         remove-labels: 'done,todo,triage'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Add to Doing list
+      uses: technote-space/create-project-card-action@v1
+      with:
+        PROJECT: backlog
+        COLUMN: Doing
   workflow-todo:
     if: github.event.label.name == 'todo'
     runs-on: ubuntu-latest
@@ -45,6 +50,11 @@ jobs:
       with:
         remove-labels: 'done,progress,triage'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Add to backlog
+      uses: technote-space/create-project-card-action@v1
+      with:
+        PROJECT: backlog
+        COLUMN: TODO
   workflow-triage:
     if: github.event.label.name == 'triage'
     runs-on: ubuntu-latest
@@ -56,6 +66,11 @@ jobs:
       with:
         remove-labels: 'done,progress,todo'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Add to backlog
+      uses: technote-space/create-project-card-action@v1
+      with:
+        PROJECT: backlog
+        COLUMN: TODO
   conventional-commit-labels:
     runs-on: ubuntu-latest
     steps:
