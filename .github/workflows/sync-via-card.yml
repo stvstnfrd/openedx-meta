@@ -1,0 +1,16 @@
+---
+name: 'Sync status via cards'
+on:
+  project_card:
+    types:
+    - moved
+jobs:
+  debug-card:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
