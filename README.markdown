@@ -71,4 +71,37 @@ When an interrupt occurs:
 When a day is ended:
 - archive project list: `openedx-standup.Done`
 
+## Proposed
+
+### Labels
+
+It would probably help to have some automation setup
+(presumably via Github Actions?)
+to update things based on labels.
+Titles too (conventional commits)?
+
+#### Workflow
+
+When issues are created:
+- automatically apply label: `triage`
+- automatically add ticket to project list: `openedx-backlog.TODO`
+  - (on both projects)
+
+When work is started:
+- manually apply label: `progress`
+- automatically remove label: `done`
+- automatically remove label: `progress`
+- automatically move ticket to project list: `openedx-backlog.Doing`
+- automatically move ticket to project list: `openedx-sprint.Doing`
+- automatically move ticket to project list: `openedx-standup.Doing`
+
+When work is finished:
+- manually apply label: `done`
+- automatically remove label: `triage`
+- automatically remove label: `progress`
+- automatically move ticket to project list: `openedx-backlog.Done`
+- automatically move ticket to project list: `openedx-sprint.Done`
+- automatically move ticket to project list: `openedx-standup.Done`
+- automatically close ticket
+
 ## References
