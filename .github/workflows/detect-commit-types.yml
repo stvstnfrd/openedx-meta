@@ -1,5 +1,5 @@
 ---
-name: 'Detect conventional commit in issue'
+name: 'Detect conventional commits'
 on:
   issues:
     types:
