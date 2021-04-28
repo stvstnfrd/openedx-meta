@@ -1,6 +1,5 @@
 ---
 BREAKING:
- - '!:'
  - 'BREAKING'
 build:
   - 'build: '
@@ -24,5 +23,3 @@ test:
   - 'test: '
 temp:
   - 'temp: '
-triage:
-  - 'triage: '
