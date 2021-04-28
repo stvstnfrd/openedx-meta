@@ -84,5 +84,9 @@ When an interrupt occurs:
 When a day is ended:
 - manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 
+## TODO
+
+- update labels if cards are moved within the projects
+
 ## References
 - [1] https://github.com/edx/open-edx-proposals/pull/182
