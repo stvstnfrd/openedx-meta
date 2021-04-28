@@ -5,12 +5,102 @@ on:
     types:
     - moved
 jobs:
-  debug-card:
+  backlog-todo:
+    if: github.event.project_card.column_id == 14061503
     runs-on: ubuntu-latest
     permissions:
       issues: write
       repository-projects: read
     steps:
-    - env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'todo'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  backlog-doing:
+    if: github.event.project_card.column_id == 14061509
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'progress'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  backlog-done:
+    if: github.event.project_card.column_id == 14061510
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'done'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  sprint-todo:
+    if: github.event.project_card.column_id == 14068697
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'todo'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  standup-doing:
+    if: github.event.project_card.column_id == 14068701
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'progress'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  standup-done:
+    if: github.event.project_card.column_id == 14068709
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'done'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  standup-todo:
+    if: github.event.project_card.column_id == 14068716
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'todo'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  sprint-doing:
+    if: github.event.project_card.column_id == 14068727
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'progress'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  sprint-done:
+    if: github.event.project_card.column_id == 14068734
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        add-labels: 'done'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
