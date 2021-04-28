@@ -1,5 +1,5 @@
 ---
-name: 'Issue Labeler'
+name: 'Sync status via labels'
 on:
   issues:
     types:
