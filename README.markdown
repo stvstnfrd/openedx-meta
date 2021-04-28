@@ -16,6 +16,11 @@ repository](https://github.com/stvstnfrd/openedx-meta/issues).
 
 ### Labels
 
+Automation of this project is driven by the addition of Github Labels.
+To mark an issue as done, set the label to [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone),
+etc. Everything else (closing the issue, updating labels, etc.)
+_should_ be handled automatically.
+
 ### Projects
 
 The following repository projects exist:
@@ -30,6 +35,11 @@ The following repository projects exist:
 When issues are created:
 - automatically apply label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically add ticket to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
+
+##### Conventional Commits
+
+If an issue is created with a title starting with a Conventional Commit prefix [1],
+we automatically apply the corresponding Github Label.
 
 #### Update
 
@@ -79,4 +89,9 @@ When an interrupt occurs:
 When a day is ended:
 - manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 
+## TODO
+
+- update labels if cards are moved within the projects
+
 ## References
+- [1] https://github.com/edx/open-edx-proposals/pull/182
