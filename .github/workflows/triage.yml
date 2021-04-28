@@ -22,8 +22,7 @@ jobs:
       with:
         PROJECT: backlog
         COLUMN: TODO
-  detect-conventional-commits-fix:
-    if: ${{ startsWith(github.event.issue.title, 'fix: ') }}
     - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, 'fix-')
       with:
         add-labels: 'bug'
