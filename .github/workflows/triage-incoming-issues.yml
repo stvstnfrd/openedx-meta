@@ -5,20 +5,18 @@ on:
     types:
     - opened
 jobs:
-  automate-issues-labels:
+  triage-incoming-issues:
     runs-on: ubuntu-latest
     permissions:
       issues: write
       repository-projects: write
     steps:
-    - name: initial labeling
-      uses: andymckay/labeler@1.0.2
+    - uses: andymckay/labeler@1.0.2
       with:
         add-labels: 'triage'
         ignore-if-assigned: true
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Add to backlog
-      uses: technote-space/create-project-card-action@v1
+    - uses: technote-space/create-project-card-action@v1
       with:
         PROJECT: backlog
         COLUMN: TODO
