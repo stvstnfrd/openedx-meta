@@ -6,6 +6,50 @@ on:
     - opened
     - edited
 jobs:
+  workflow-done:
+    if: github.event.label.name == 'done'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Mark as done
+      uses: andymckay/labeler@1.0.2
+      with:
+        remove-labels: 'progress, todo, triage'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  workflow-progress:
+    if: github.event.label.name == 'progress'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Mark as in-progress
+      uses: andymckay/labeler@1.0.2
+      with:
+        remove-labels: 'done, todo, triage'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  workflow-todo:
+    if: github.event.label.name == 'todo'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Mark as TODO
+      uses: andymckay/labeler@1.0.2
+      with:
+        remove-labels: 'done, progress, triage'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  workflow-triage:
+    if: github.event.label.name == 'triage'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - name: Mark as in-triage
+      uses: andymckay/labeler@1.0.2
+      with:
+        remove-labels: 'done, progress, todo'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
   conventional-commit-labels:
     runs-on: ubuntu-latest
     steps:
