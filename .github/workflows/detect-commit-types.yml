@@ -1,0 +1,68 @@
+---
+name: 'Detect commit types for conventional commits'
+on:
+  issues:
+    types:
+    - opened
+jobs:
+  detect-commit-types:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: write
+    steps:
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('build{0} ', ':'))
+      with:
+        add-labels: 'build'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('chore{0} ', ':'))
+      with:
+        add-labels: 'chore'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('docs{0} ', ':'))
+      with:
+        add-labels: 'documentation'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('feat{0} ', ':'))
+      with:
+        add-labels: 'enhancement'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('fix{0} ', ':'))
+      with:
+        add-labels: 'bug'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('perf{0} ', ':'))
+      with:
+        add-labels: 'perf'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('refactor{0} ', ':'))
+      with:
+        add-labels: 'refactor'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('revert{0} ', ':'))
+      with:
+        add-labels: 'revert'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('style{0} ', ':'))
+      with:
+        add-labels: 'style'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('test{0} ', ':'))
+      with:
+        add-labels: 'test'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('temp{0} ', ':'))
+      with:
+        add-labels: 'temp'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
