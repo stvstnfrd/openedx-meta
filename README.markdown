@@ -14,92 +14,69 @@ workflows.
 All TODO items/ideas are added as [Github Issues on this
 repository](https://github.com/stvstnfrd/openedx-meta/issues).
 
+### Labels
+
 ### Projects
 
 The following repository projects exist:
-- [openedx-backlog](https://github.com/stvstnfrd/openedx-meta/projects)
-
-The following user projects exist:
-- [openedx-backlog](https://github.com/users/stvstnfrd/projects/5)
-- [openedx-sprint](https://github.com/users/stvstnfrd/projects/2)
-- [openedx-standup](https://github.com/users/stvstnfrd/projects/4)
+- [backlog](https://github.com/stvstnfrd/openedx-meta/projects/1)
+- [sprint](https://github.com/stvstnfrd/openedx-meta/projects/2)
+- [standup](https://github.com/stvstnfrd/openedx-meta/projects/3)
 
 ### Issue Flow
 
 #### Create
 
 When issues are created:
-- add ticket to project list: `openedx-backlog.TODO`
+- automatically apply label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically add ticket to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
 
 #### Update
 
 When work is started:
-- move ticket to project list: `openedx-backlog.Doing`
-- move ticket to project list: `openedx-sprint.Doing`
-- move ticket to project list: `openedx-standup.Doing`
+- manually apply label: [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
+- automatically remove label: [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
+- automatically remove label: [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
+- automatically remove label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically move ticket to project list: [backlog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061509)
+- automatically move ticket to project list: [sprint/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
+- automatically move ticket to project list: [standup/Doing](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068727)
 
-##### Automatically move to done when issue closed
+#### Complete
 
 When work is finished:
-- move ticket to project list: `openedx-backlog.Done`
-- move ticket to project list: `openedx-sprint.Done`
-- move ticket to project list: `openedx-standup.Done`
+- manually apply label: [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
+- automatically remove label: [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
+- automatically remove label: [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
+- automatically remove label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically move ticket to project list: [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
+- automatically move ticket to project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
+- automatically move ticket to project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
+- automatically close ticket
 
 #### Ceremony
 
 ##### Weekly
 
 When a sprint is started:
-- assign tickets to owner
-- add tickets to project list: `openedx-sprint.TODO`
+- manually assign tickets to owner
+- manually add tickets to project list: [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 
 When a sprint is ended:
-- archive project list: `openedx-sprint.Done`
+- manually archive project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 
 ##### Daily
 
 When a day is started:
-- add tickets to project list: `openedx-standup.TODO`
+- manually add tickets to project list: [standup/TODO](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068716)
 
 When an interrupt occurs:
-- add ticket to project list: `openedx-backlog.TODO`
-- add ticket to project list: `openedx-sprint.TODO`
-- add ticket to project list: `openedx-standup.TODO`
-- assign ticket to owner
+- manually add ticket to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
+- manually add ticket to project list: [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
+- manually add ticket to project list: [standup/TODO](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068716)
+- manually assign ticket to owner
 
 When a day is ended:
-- archive project list: `openedx-standup.Done`
-
-## Proposed
-
-### Labels
-
-It would probably help to have some automation setup
-(presumably via Github Actions?)
-to update things based on labels.
-Titles too (conventional commits)?
-
-#### Workflow
-
-When issues are created:
-- automatically apply label: `triage`
-- automatically add ticket to project list: `openedx-backlog.TODO`
-
-When work is started:
-- manually apply label: `progress`
-- automatically remove label: `done`
-- automatically remove label: `progress`
-- automatically move ticket to project list: `openedx-backlog.Doing`
-- automatically move ticket to project list: `openedx-sprint.Doing`
-- automatically move ticket to project list: `openedx-standup.Doing`
-
-When work is finished:
-- manually apply label: `done`
-- automatically remove label: `triage`
-- automatically remove label: `progress`
-- automatically move ticket to project list: `openedx-backlog.Done`
-- automatically move ticket to project list: `openedx-sprint.Done`
-- automatically move ticket to project list: `openedx-standup.Done`
-- automatically close ticket
+- manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 
 ## References
