@@ -5,6 +5,7 @@ on:
     types:
     - opened
     - edited
+    - labeled
 jobs:
   workflow-done:
     if: github.event.label.name == 'done'
