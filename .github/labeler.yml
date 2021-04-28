@@ -1,6 +1,5 @@
 ---
 BREAKING:
- - '!:'
  - 'BREAKING'
 build:
   - 'build: '
