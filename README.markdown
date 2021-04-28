@@ -92,6 +92,11 @@ When a day is ended:
 ## TODO
 
 - update labels if cards are moved within the projects
+- create automated/manual actions to snapshot daily standup, weekly sprint, etc.
+
+## Notes
+
+- We often refer to a "sprint" and a "week" interchangeably.
 
 ## References
 - [1] https://github.com/edx/open-edx-proposals/pull/182
