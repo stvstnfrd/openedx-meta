@@ -16,13 +16,24 @@ jobs:
     - name: Mark as done
       uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
-        remove-labels: 'progress,todo,triage'
+        remove-labels: 'invalid,progress,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Close the issue
       uses: peter-evans/close-issue@v1
       with:
         comment: |
           Marked as done.
+  workflow-invalid:
+    if: github.event.label.name == 'invalid'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        remove-labels: 'done,progress,todo,triage,wontfix'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: peter-evans/close-issue@v1
   workflow-progress:
     if: github.event.label.name == 'progress'
     runs-on: ubuntu-latest
@@ -33,7 +44,7 @@ jobs:
     - name: Mark as in-progress
       uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
-        remove-labels: 'done,todo,triage'
+        remove-labels: 'done,invalid,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-project-card@v1
       with:
@@ -56,7 +67,7 @@ jobs:
     - name: Mark as TODO
       uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
-        remove-labels: 'done,progress,triage'
+        remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-project-card@v1
       with:
@@ -79,7 +90,7 @@ jobs:
     - name: Mark as in-triage
       uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
       with:
-        remove-labels: 'done,progress,todo'
+        remove-labels: 'done,invalid,progress,todo,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-project-card@v1
       with:
@@ -93,3 +104,14 @@ jobs:
       with:
         project-name: standup
         column-name: TODO
+  workflow-wontfix:
+    if: github.event.label.name == 'wontfix'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
+      with:
+        remove-labels: 'done,invalid,progress,todo,triage'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: peter-evans/close-issue@v1
