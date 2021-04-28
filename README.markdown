@@ -30,7 +30,6 @@ The following user projects exist:
 
 When issues are created:
 - add ticket to project list: `openedx-backlog.TODO`
-  - (on both projects)
 
 #### Update
 
@@ -85,7 +84,6 @@ Titles too (conventional commits)?
 When issues are created:
 - automatically apply label: `triage`
 - automatically add ticket to project list: `openedx-backlog.TODO`
-  - (on both projects)
 
 When work is started:
 - manually apply label: `progress`
