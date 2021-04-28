@@ -23,7 +23,7 @@ jobs:
         PROJECT: backlog
         COLUMN: TODO
     - uses: andymckay/labeler@1.0.2
-      if: startsWith(github.event.issue.title, format('fix{0} ', '\:'))
+      if: startsWith(github.event.issue.title, format('fix{0} ', ':'))
       with:
         add-labels: 'bug'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
