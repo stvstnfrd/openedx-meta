@@ -1,0 +1,25 @@
+name: Handle Standup
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+jobs:
+  standup:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      repository-projects: read
+    steps:
+    - run: |
+        echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Tags: ${{ github.event.inputs.tags }}"
+        curl \
+            -H 'Accept: application/vnd.github.inertia-preview+json' \
+            https://api.github.com/projects/columns/14068734/cards \
+        ;
+# -H 'authorization: Bearer <TOKEN>' \
