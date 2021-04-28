@@ -31,6 +31,11 @@ When issues are created:
 - automatically apply label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically add ticket to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
 
+##### Conventional Commits
+
+If an issue is created with a title starting with a Conventional Commit prefix [1],
+we automatically apply the corresponding Github Label.
+
 #### Update
 
 When work is started:
@@ -80,3 +85,4 @@ When a day is ended:
 - manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 
 ## References
+- [1] https://github.com/edx/open-edx-proposals/pull/182
