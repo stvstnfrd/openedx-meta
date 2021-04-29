@@ -25,4 +25,4 @@ jobs:
             https://api.github.com/projects/columns/14068734/cards \
         ;
       id: get_project_list_cards
-    - run: "echo card list: ${{ steps.get_project_list_cards.outputs.data }}"
+    - run: "echo card list: ${{ steps.get_project_list_cards.outputs }}"
