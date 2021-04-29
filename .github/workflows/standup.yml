@@ -18,8 +18,11 @@ jobs:
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}"
-        curl \
-            -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.inertia-preview+json" \
-            https://api.github.com/projects/columns/14068734/cards \
-        ;
+    - uses: octokit/request-action@v2.x
+      id: get_column_cards
+      with:
+        route: GET /projects/columns/14068734/cards
+        column_id: GET /projects/columns/{column_id}/cards
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: "echo latest release: ${{ steps.get_latest_release.outputs.data }}"
