@@ -46,6 +46,25 @@ When issues are created:
 If an issue is created with a title starting with a Conventional Commit prefix [1],
 we automatically apply the corresponding Github Label.
 
+###### Supported types
+
+- [build](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Abuild)
+- [chore](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Achore)
+- [docs](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Adocs)
+- [feat](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Afeat)
+- [fix](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Afix)
+- [perf](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aperf)
+- [refactor](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Arefactor)
+- [revert](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Arevert)
+- [style](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Astyle)
+- [style](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Astyle)
+- [temp](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atemp)
+- [test](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atest)
+
+We also flag potential "parking lot" discussions with the prefix:
+
+- [discuss](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Adiscuss)
+
 #### Update
 
 When work is started:
