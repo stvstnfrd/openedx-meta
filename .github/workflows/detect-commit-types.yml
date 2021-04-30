@@ -22,19 +22,24 @@ jobs:
         add-labels: 'chore'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: andymckay/labeler@1.0.2
+      if: startsWith(github.event.issue.title, format('discuss{0} ', ':'))
+      with:
+        add-labels: 'discuss'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: andymckay/labeler@1.0.2
       if: startsWith(github.event.issue.title, format('docs{0} ', ':'))
       with:
-        add-labels: 'documentation'
+        add-labels: 'docs'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: andymckay/labeler@1.0.2
       if: startsWith(github.event.issue.title, format('feat{0} ', ':'))
       with:
-        add-labels: 'enhancement'
+        add-labels: 'feat'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: andymckay/labeler@1.0.2
       if: startsWith(github.event.issue.title, format('fix{0} ', ':'))
       with:
-        add-labels: 'bug'
+        add-labels: 'fix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: andymckay/labeler@1.0.2
       if: startsWith(github.event.issue.title, format('perf{0} ', ':'))
