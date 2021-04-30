@@ -30,7 +30,7 @@ jobs:
         # fields: '{"customfield_10171": "test"}'
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-    - run:
+    - run: |
         curl \
             -X PATCH \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
