@@ -17,6 +17,7 @@ jobs:
       id: find
       with:
         string: ${{ github.event.issue.title }}
+        from: ''
     - name: Close issue
       if: steps.find.outputs.issue
       id: close
