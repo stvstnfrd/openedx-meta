@@ -28,6 +28,9 @@ The following repository projects exist:
 - [sprint](https://github.com/stvstnfrd/openedx-meta/projects/2)
 - [standup](https://github.com/stvstnfrd/openedx-meta/projects/3)
 
+Optionally, the repository can be connected to a JIRA board, presently:
+https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689
+
 ### Issue Flow
 
 #### Create
@@ -35,6 +38,8 @@ The following repository projects exist:
 When issues are created:
 - automatically apply label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically add ticket to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
+- automatically create a JIRA ticket to track this issue:
+  [CENG/backlog](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG&view=planning&issueLimit=100)
 
 ##### Conventional Commits
 
@@ -51,6 +56,7 @@ When work is started:
 - automatically move ticket to project list: [backlog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061509)
 - automatically move ticket to project list: [sprint/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
 - automatically move ticket to project list: [standup/Doing](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068727)
+- automatically transition JIRA ticket "In Progress": [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
 #### Complete
 
@@ -63,6 +69,8 @@ When work is finished:
 - automatically move ticket to project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 - automatically move ticket to project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 - automatically close ticket
+- automatically close JIRA ticket:
+  [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
 #### Ceremony
 
@@ -88,6 +96,19 @@ When an interrupt occurs:
 
 When a day is ended:
 - manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
+
+## Configuration
+
+To enable JIRA integration, the following Repository Secrets must be added:
+
+- `JIRA_API_TOKEN`
+  - To create a personal token, visit
+    https://id.atlassian.com/manage/api-tokens
+- `JIRA_BASE_URL`
+  - This is the base of your JIRA installation, like
+    https://MY-PROJECT.atlassian.net
+- `JIRA_USER_EMAIL`
+  - This is the email of the account associated with the access token.
 
 ## TODO
 
