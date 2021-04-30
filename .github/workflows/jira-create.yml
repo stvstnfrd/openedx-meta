@@ -6,15 +6,16 @@ on:
     - opened
 jobs:
   create-jira-ticket:
-    if: secrets.JIRA_API_TOKEN
     runs-on: ubuntu-latest
     steps:
     - uses: atlassian/gajira-login@master
+      if: secrets.JIRA_API_TOKEN
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
     - uses: atlassian/gajira-create@master
+      if: secrets.JIRA_API_TOKEN
       id: create
       with:
         project: CENG
@@ -32,8 +33,11 @@ jobs:
           ${{ toJSON(github.event.issue) }}
         # fields: '{"customfield_10171": "test"}'
     - name: Log created issue
+      if: secrets.JIRA_API_TOKEN
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-    - run: |
+    - name: Link to JIRA ticket from Github Issue
+      if: secrets.JIRA_API_TOKEN
+      run: |
         curl \
             -X PATCH \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
