@@ -1,5 +1,5 @@
 ---
-name: 'Transition incoming issues'
+name: Transition JIRA ticket
 on:
   issues:
     types:
@@ -8,7 +8,7 @@ jobs:
   transition-jira-ticket:
     runs-on: ubuntu-latest
     steps:
-    - run: "echo ${{ toJSON(github) }}"
+    - run: echo "${{ toJSON(github) }}"
     - uses: atlassian/gajira-login@master
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}

@@ -1,5 +1,5 @@
 ---
-name: Close the linked JIRA ticket
+name: Close JIRA ticket
 on:
   issues:
     types:
