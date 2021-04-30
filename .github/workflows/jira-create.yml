@@ -25,6 +25,8 @@ jobs:
           ---
           This is an internal ticket to track a public one.
           Changes and comments made here are _not_ synced to Github.
+          Public comments should be made directly to the Github Issue at
+          ${{ github.event.issue.html_url }}
           ---
           ${{ toJSON(github.event.issue) }}
         # fields: '{"customfield_10171": "test"}'
