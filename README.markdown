@@ -87,7 +87,8 @@ When work is finished:
 - automatically move ticket to project list: [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
 - automatically move ticket to project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 - automatically move ticket to project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
-- automatically close ticket
+- automatically close ticket:
+  [closed](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aissue+is%3Aclosed)
 - automatically close JIRA ticket:
   [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
