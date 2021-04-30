@@ -30,4 +30,9 @@ jobs:
       with:
         issue: "${{ steps.find.outputs.issue }}"
         transition: "In progress"
-    # DONE transition is handled by the jira-close workflow
+    - name: Mark as done
+      if: steps.find.outputs.issue && github.event.label.name == 'done'
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: "${{ steps.find.outputs.issue }}"
+        transition: "Done"
