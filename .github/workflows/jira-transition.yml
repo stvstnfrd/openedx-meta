@@ -33,7 +33,7 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: "${{ steps.find.outputs.issue }}"
-        transition: "In progress"
+        transition: 'In Progress'
     - name: Mark as done
       if: steps.use-jira.outputs.result && steps.find.outputs.issue && github.event.label.name == 'done'
       uses: atlassian/gajira-transition@master
