@@ -1,11 +1,34 @@
 ---
-name: 'Transition JIRA tickets'
+name: 'Transition incoming issues'
 on:
   issues:
     types:
-    - edited
+    - labeled
 jobs:
   transition-jira-ticket:
     runs-on: ubuntu-latest
     steps:
     - run: "echo ${{ toJSON(github) }}"
+    - uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    - uses: atlassian/gajira-find-issue-key@master
+      id: find
+      with:
+        string: ${{ github.event.issue.title }}
+        from: ''
+    - name: Mark as TODO
+      if: steps.find.outputs.issue && github.event.label.name == 'todo'
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: "${{ steps.find.outputs.issue }}"
+        transition: "Todo"
+    - name: Mark as in-progress
+      if: steps.find.outputs.issue && github.event.label.name == 'progress'
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: "${{ steps.find.outputs.issue }}"
+        transition: "In progress"
+    # DONE transition is handled by the jira-close workflow
