@@ -1,0 +1,11 @@
+---
+name: 'Transition JIRA tickets'
+on:
+  issues:
+    types:
+    - edited
+jobs:
+  transition-jira-ticket:
+    runs-on: ubuntu-latest
+    steps:
+    - run: "echo ${{ toJSON(github) }}"
