@@ -1,0 +1,32 @@
+---
+name: Create JIRA ticket to track
+on:
+  issues:
+    types:
+    - opened
+jobs:
+  create-jira-ticket:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    - uses: atlassian/gajira-create@master
+      id: create
+      with:
+        project: CENG
+        issuetype: Task
+        summary: |
+          [PUBLIC] ${{ github.event.issue.title }}
+        description: |
+          ${{ github.event.issue.description }}
+          ---
+          This is an internal ticket to track a public one.
+          Changes and comments made here are _not_ synced to Github.
+          ---
+          ${{ toJSON(github.event.issue) }}
+        # fields: '{"customfield_10171": "test"}'
+    - name: Log created issue
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
