@@ -8,14 +8,17 @@ jobs:
   create-jira-ticket:
     runs-on: ubuntu-latest
     steps:
+    - id: use-jira
+      run: |
+        echo ::setenv name=result::$(test -n ${{ secrets.JIRA_BASE_URL }} && echo 1)
     - uses: atlassian/gajira-login@master
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
     - uses: atlassian/gajira-create@master
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       id: create
       with:
         project: CENG
@@ -33,10 +36,10 @@ jobs:
           ${{ toJSON(github.event.issue) }}
         # fields: '{"customfield_10171": "test"}'
     - name: Log created issue
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
     - name: Link to JIRA ticket from Github Issue
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       run: |
         curl \
             -X PATCH \

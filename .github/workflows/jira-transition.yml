@@ -8,32 +8,35 @@ jobs:
   transition-jira-ticket:
     runs-on: ubuntu-latest
     steps:
+    - id: use-jira
+      run: |
+        echo ::setenv name=result::$(test -n ${{ secrets.JIRA_BASE_URL }} && echo 1)
     - uses: atlassian/gajira-login@master
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
     - uses: atlassian/gajira-find-issue-key@master
-      if: secrets.JIRA_API_TOKEN
+      if: steps.use-jira.outputs.result
       id: find
       with:
         string: ${{ github.event.issue.title }}
         from: ''
     - name: Mark as TODO
-      if: secrets.JIRA_API_TOKEN && steps.find.outputs.issue && github.event.label.name == 'todo'
+      if: steps.use-jira.outputs.result && steps.find.outputs.issue && github.event.label.name == 'todo'
       uses: atlassian/gajira-transition@master
       with:
         issue: "${{ steps.find.outputs.issue }}"
         transition: "Todo"
     - name: Mark as in-progress
-      if: secrets.JIRA_API_TOKEN && steps.find.outputs.issue && github.event.label.name == 'progress'
+      if: steps.use-jira.outputs.result && steps.find.outputs.issue && github.event.label.name == 'progress'
       uses: atlassian/gajira-transition@master
       with:
         issue: "${{ steps.find.outputs.issue }}"
         transition: "In progress"
     - name: Mark as done
-      if: secrets.JIRA_API_TOKEN && steps.find.outputs.issue && github.event.label.name == 'done'
+      if: steps.use-jira.outputs.result && steps.find.outputs.issue && github.event.label.name == 'done'
       uses: atlassian/gajira-transition@master
       with:
         issue: "${{ steps.find.outputs.issue }}"
