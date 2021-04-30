@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: use-jira
-      run: echo '::setoutput name=result::$(test -n ${{ secrets.JIRA_BASE_URL }} && echo 1)'
+      run: echo '::set-output name=result::$(test -n ${{ secrets.JIRA_BASE_URL }} && echo 1)'
     - uses: atlassian/gajira-login@master
       if: steps.use-jira.outputs.result
       env:
