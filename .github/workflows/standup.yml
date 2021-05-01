@@ -24,7 +24,7 @@ jobs:
     - run: ls -la
     - run: pip install -r .github/requirements.txt
     - run: |
-        export BASENAME="$(date '%Y/%m/%d')"
+        export BASENAME="$(date '+%Y/%m/%d')"
         echo "::set-output name=BASENAME::${BASENAME}"
       id: BASENAME
     - run: python3 .github/standup.py > ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
