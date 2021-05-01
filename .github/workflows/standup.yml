@@ -26,8 +26,8 @@ jobs:
     - run: pwd
     - run: ls
     - run: ls -la
-    - run: pip install -r openedx-meta/.github/requests.txt
-    - run: python3 openedx-meta/.github/standup.py > ./standup.markdown
+    - run: pip install -r .github/requirements.txt
+    - run: python3 .github/standup.py > ./standup.markdown
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: cat ./standup.markdown
