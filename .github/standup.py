@@ -105,6 +105,13 @@ class Board:
                 self.columns[key]['authors'][card.author].append(card)
 
     @property
+    def is_standup_today(self):
+        standup_time = self.standup_time
+        if standup_time.weekday() in (5,6):
+            return False
+        return True
+
+    @property
     def standup_time(self):
         now = datetime.now()
         start = datetime(
@@ -172,6 +179,8 @@ class Board:
         return text
 
     def __str__(self):
+        if not self.is_standup_today:
+            return ''
         assignees = ', '.join(self.participants)
         lines = [
             '---',
