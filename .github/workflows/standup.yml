@@ -25,15 +25,16 @@ jobs:
     - run: pip install -r .github/requirements.txt
     - run: |
         export BASENAME="$(date '%Y/%m/%d')"
-        echo "::set-env name=BASENAME::${BASENAME}"
-    - run: python3 .github/standup.py > ./docs/standup/${BASENAME}.markdown
+        echo "::set-output name=BASENAME::${BASENAME}"
+      id: BASENAME
+    - run: python3 .github/standup.py > ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: mkdir -p ./docs/standup/${BASENAME} || true
-    - run: cat ./docs/standup/${BASENAME}.markdown
+    - run: mkdir -p ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }} || true
+    - run: cat ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
     - uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ./docs/standup/${BASENAME}.markdown
+        filename: ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
         update_existing: true
