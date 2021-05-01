@@ -59,12 +59,12 @@ jobs:
         branch: standup/${{ env.DATE }}
         commit-message: |
             standup: ${{ env.DATE }}
-
-            Closes: #${{ steps.create.outputs.number }}
         title: |
             standup: ${{ env.DATE }}
         body: |
-            This is a PR body...
+            This is the day's standup.
+
+            Closes: #${{ steps.create.outputs.number }}
         labels: standup
         committer: "GitHub <noreply@github.com>"
         author: "GitHub <noreply@github.com>"
