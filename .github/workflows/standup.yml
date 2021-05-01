@@ -29,14 +29,14 @@ jobs:
         echo "::set-output name=BASENAME::${BASENAME}"
         echo "::set-output name=FILENAME::${FILENAME}"
       id: BASENAME
-    - run: mkdir -p ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }} || true
+    - run: mkdir -p ${{ steps.BASENAME.outputs.BASENAME }} || true
     - run: python3 .github/standup.py > ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: cat ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
+    - run: cat ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
     - uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
+        filename: ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
         update_existing: true
