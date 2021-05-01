@@ -171,7 +171,7 @@ class Board:
         return text
 
     def __str__(self):
-        assignees = ', '.join(self.assignees)
+        assignees = ', '.join(self.participants)
         lines = [
             '---',
             'title: {self.title}',
