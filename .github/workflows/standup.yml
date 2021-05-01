@@ -23,13 +23,14 @@ jobs:
     - run: ls
     - run: ls -la
     - run: pip install -r .github/requirements.txt
-    - run: python3 .github/standup.py > ./standup.markdown
+    - run: python3 .github/standup.py > ./docs/standup/$(date '%Y/%m/%d').markdown
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: cat ./standup.markdown
+    - run: mkdir -p ./docs/standup/$(date '+%Y/%m') || true
+    - run: cat ./docs/standup/$(date '+%Y/%m/%d').markdown
     - uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ./standup.markdown
+        filename: ./docs/standup/$(date '%Y/%m/%d').markdown
         update_existing: true
