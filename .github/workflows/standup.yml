@@ -47,6 +47,11 @@ jobs:
       with:
         filename: ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
         update_existing: true
+    - name: update remote
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          git remote set-url --push origin https://stvstnfrd:$GITHUB_TOKEN@github.com/stvstnfrd/openedx-meta.git
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       env:
