@@ -175,7 +175,6 @@ class Board:
         lines = [
             '---',
             f"title: {self.title}",
-            f"assignees: {assignees}",
             '---',
         ]
         lines.append(f"# {self.title_as_markdown}")
