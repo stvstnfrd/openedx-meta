@@ -1,4 +1,4 @@
-#!make -f
+#!/usr/bin/env make
 .PHONY: help
 help:  ## This.
 	@echo "Available targets:"
@@ -13,11 +13,14 @@ tree:
 .PHONY: ci
 ci: ci.install  ## run the CI/test validation suite
 	yamllint .
+	pylint .github
 
 .PHONY: ci.install
 ci.install:  ## install CI/test dependencies
 	@command -v yamllint >/dev/null \
 	|| pip install yamllint
+	@command -v pylint >/dev/null \
+	|| pip install pylint
 
 MY-SORT = $(shell echo '$2' | tr ' ' '\n' | sort $1 -)
 DETECT-VERSION = $(firstword $(call MY-SORT,-nr,$(subst /,,$(subst $1/,,$(wildcard $1/*/)))))
@@ -77,8 +80,63 @@ sprint: $(FILE_NEXT_SPRINT)  ## Generate this "week's" sprint
 .PHONY: standup version_patch
 version_patch: standup
 standup: $(FILE_NEXT_STANDUP)  ## Generate today's standup notes
+	@cat "$(DIR_VERSION_MAJOR)/README.markdown" \
+	| sed '/---/,$$d' \
+	> tmp.md
+	@echo '---' >> tmp.md
+	@$(MAKE) changelog-team >> tmp.md
+	mv tmp.md "$(DIR_VERSION_MAJOR)/README.markdown"
+	@cat "$(DIR_VERSIONS)/README.markdown" \
+	| sed '/---/,$$d' \
+	> tmp.md
+	@echo '---' >> tmp.md
+	@$(MAKE) changelog >> tmp.md
+	mv tmp.md "$(DIR_VERSIONS)/README.markdown"
+	GITHUB_TOKEN=$(GITHUB_TOKEN) python3 .github/standup.py sprint > "$(DIR_VERSION_MINOR)/README.markdown"
+	git add "$(DIR_VERSIONS)/README.markdown"
+	git add "$(DIR_VERSION_MAJOR)/README.markdown"
+	git add "$(DIR_VERSION_MINOR)/README.markdown"
 	git add "$(DIR_VERSION_PATCH_NEXT)"
 	git commit -m "standup: report today's standup: {DATESTAMP}"
+
+.PHONY: changelog changelog-team
+CHANGELOG_FILES_ALL=$(call MY-SORT,-nr,$(wildcard docs/versions/*/*/*/README.markdown))
+CHANGELOG_FILES_TEAM=$(call MY-SORT,-nr,$(wildcard docs/versions/$(DETECT_VERSION_MAJOR)/*/*/README.markdown))
+changelog-team: $(CHANGELOG_FILES_TEAM)
+	@echo '# changelog'
+	@echo
+	@echo "## unreleased changes"
+	@echo
+	@for file in $(^); do \
+		echo "## v$$(echo $$file \
+		| sed 's@docs/versions/@@g; s@/README.markdown$$@@g; y@/@.@' \
+		)"; \
+		cat $$file \
+		| sed '1,/^---$$/d' \
+		| sed '/## unreleased /,/## \[done/{//!d}' \
+		| sed '/^##\? /d' \
+		| cat -s \
+		; \
+		echo; \
+	done
+
+changelog: $(CHANGELOG_FILES_ALL)
+	@echo '# changelog'
+	@echo
+	@echo "## unreleased changes"
+	@echo
+	@for file in $(^); do \
+		echo "## v$$(echo $$file \
+		| sed 's@docs/versions/@@g; s@/README.markdown$$@@g; y@/@.@' \
+		)"; \
+		cat $$file \
+		| sed '1,/^---$$/d' \
+		| sed '/## unreleased /,/## \[done/{//!d}' \
+		| sed '/^##\? /d' \
+		| cat -s \
+		; \
+		echo; \
+	done
 
 # team
 ifeq ($(TEAM_MEMBERS),)
@@ -94,11 +152,6 @@ endif
 	@echo "members: $(TEAM_MEMBERS)" >> "$(@)"
 	@echo "" >> "$(@)"
 	@echo "---" >> "$(@)"
-	echo "# team" >> "$(@)"
-	@echo "" >> "$(@)"
-	@echo "## how we work" >> "$(@)"
-	@echo "" >> "$(@)"
-	@echo "- [ ] TODO: this!" >> "$(@)"
 endif
 
 # sprint
@@ -111,13 +164,14 @@ $(DIR_VERSION_MINOR_NEXT)/README.markdown: $(DIR_VERSION_MINOR_NEXT)/
 
 # standup/planning
 $(FILE_NEXT_STANDUP): $(DIR_VERSION_PATCH_NEXT)/
+ifeq ($(DETECT_VERSION_PATCH_NEXT),0)
 	@echo "version: '$(subst /,.,$(subst /README.markdown,,$(subst docs/versions/,,$(@))))'" > "$(@)"
 	@echo "" >> "$(@)"
 	@echo "---" >> "$(@)"
-ifeq ($(DETECT_VERSION_PATCH_NEXT),0)
 	echo "# planning" >> "$(@)"
 else
-	echo "# standup" >> "$(@)"
+	GITHUB_TOKEN=$(GITHUB_TOKEN) python3 .github/standup.py standup > "$(@)"
+
 endif
 
 .PRECIOUS: $(DIR_VERSIONS)/%/
