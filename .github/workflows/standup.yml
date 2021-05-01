@@ -64,7 +64,7 @@ jobs:
         body: |
             This is the day's standup.
 
-            Closes: #${{ steps.create.outputs.number }}
+            Closes #${{ steps.create.outputs.number }}
         labels: standup
         committer: "GitHub <noreply@github.com>"
         author: "GitHub <noreply@github.com>"
