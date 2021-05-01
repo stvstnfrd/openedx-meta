@@ -162,7 +162,7 @@ class Board:
 
     @property
     def title(self):
-        text = str(self.standup_time)
+        text = f"standup: {self.standup_time}"
         return text
 
     @property
@@ -175,6 +175,7 @@ class Board:
         lines = [
             '---',
             f"title: {self.title}",
+            f"assignees: {assignees}",
             '---',
         ]
         lines.append(f"# {self.title_as_markdown}")
