@@ -171,11 +171,11 @@ class Board:
         return text
 
     def __str__(self):
+        assignees = ', '.join(self.assignees)
         lines = [
             '---',
-            'title: TITLE GOES HERE',
-            'assignees: one, two, three',
-            'labels: one, two, three',
+            'title: {self.title}',
+            'assignees: {assignees}',
             '---',
         ]
         lines.append(f"# {self.title_as_markdown}")
