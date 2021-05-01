@@ -25,9 +25,16 @@ jobs:
     - run: pip install -r .github/requirements.txt
     - run: |
         export BASENAME="docs/standup/$(date '+%Y/%m')"
+        export DATE="$(date '+%Y/%m/%d')"
         export FILENAME="$(date '+%d').markdown"
+        export BRANCHNAME="$(date '+%Y/%m/%d').markdown"
+        echo "BASENAME=${BASENAME}" >> "${GITHUB_ENV}"
+        echo "FILENAME=${FILENAME}" >> "${GITHUB_ENV}"
+        echo "BRANCHNAME=${BRANCHNAME}" >> "${GITHUB_ENV}"
+        echo "DATE=${DATE}" >> "${GITHUB_ENV}"
         echo "::set-output name=BASENAME::${BASENAME}"
         echo "::set-output name=FILENAME::${FILENAME}"
+        echo "::set-output name=BRANCHNAME::${BRANCHNAME}"
       id: BASENAME
     - run: mkdir -p ${{ steps.BASENAME.outputs.BASENAME }} || true
     - run: python3 .github/standup.py > ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
