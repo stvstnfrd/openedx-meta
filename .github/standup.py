@@ -174,7 +174,7 @@ class Board:
         assignees = ', '.join(self.participants)
         lines = [
             '---',
-            f"title: {self.title}",
+            f"title: '{self.title}'",
             f"assignees: {assignees}",
             '---',
         ]
