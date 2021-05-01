@@ -44,11 +44,15 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: cat ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
     - uses: JasonEtco/create-an-issue@v2
+      id: create
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         filename: ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
         update_existing: true
+    - run: |
+        echo "" >> ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
+        echo "Fixes: ${{ steps.create.outputs.number }}" >> ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       env:
@@ -63,6 +67,7 @@ jobs:
         body: |
             This is a PR body...
         labels: standup
+        committer: "GitHub <noreply@github.com>"
         # assignees: one, two
         # reviewers: one, two
         # team-reviewers: one, two
