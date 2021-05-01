@@ -59,7 +59,7 @@ jobs:
           git checkout -b standup/${{ env.DATE }}
           git add .
           git commit -m "standup: ${{ env.DATE }}"
-          git push
+          git push --set-upstream origin standup/${{ env.DATE }}
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       env:
