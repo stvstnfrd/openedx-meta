@@ -47,3 +47,19 @@ jobs:
       with:
         filename: ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
         update_existing: true
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        branch: standup
+        branch-suffix: timestamp
+        commit-message: |
+            "standup: ${{ steps.BASENAME.outputs.DATE }}"
+        title: |
+            "standup: ${{ steps.BASENAME.outputs.DATE }}"
+        body: |
+            This is a PR body...
+        labels: standup
+        # assignees: one, two
+        # reviewers: one, two
+        # team-reviewers: one, two
+        # milestone: mklasdfas
