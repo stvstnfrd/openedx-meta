@@ -1,0 +1,25 @@
+---
+title: 'standup: 2021-05-04'
+assignees: stvstnfrd
+labels: standup
+---
+# [standup: 2021-05-04](https://github.com/stvstnfrd/openedx-meta-meta/issues?q=is%3Aissue+sort%3Aupdated-desc)
+
+## [done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
+
+### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
+
+- [x] [feat: Add extra legacy discussions settings handling [CENG-46]](https://github.com/stvstnfrd/openedx-meta/issues/2)
+- [x] [Do a thing](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60152620)
+
+## [doing](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068727)
+
+### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
+
+- [ ] [test: transitions [CENG-45]](https://github.com/stvstnfrd/openedx-meta/issues/88)
+
+## [todo](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068716)
+
+### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
+
+- [ ] [discuss: a thing](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60157902)
