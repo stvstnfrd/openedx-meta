@@ -57,9 +57,9 @@ jobs:
         token: "${{ secrets.GITHUB_TOKEN }}"
         branch: standup/${{ env.DATE }}
         commit-message: |
-            "standup: ${{ steps.BASENAME.outputs.DATE }}"
+            standup: ${{ env.DATE }}
         title: |
-            "standup: ${{ steps.BASENAME.outputs.DATE }}"
+            standup: ${{ env.DATE }}
         body: |
             This is a PR body...
         labels: standup
