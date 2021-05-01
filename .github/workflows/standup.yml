@@ -24,17 +24,19 @@ jobs:
     - run: ls -la
     - run: pip install -r .github/requirements.txt
     - run: |
-        export BASENAME="$(date '+%Y/%m/%d')"
+        export BASENAME="docs/standup/$(date '+%Y/%m')"
+        export FILENAME="$(date '+%d').markdown"
         echo "::set-output name=BASENAME::${BASENAME}"
+        echo "::set-output name=FILENAME::${FILENAME}"
       id: BASENAME
     - run: mkdir -p ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }} || true
-    - run: python3 .github/standup.py > ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
+    - run: python3 .github/standup.py > ${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: cat ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
+    - run: cat ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME }}
     - uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}.markdown
+        filename: ./docs/standup/${{ steps.BASENAME.outputs.BASENAME }}/${{ steps.BASENAME.outputs.FILENAME}}
         update_existing: true
