@@ -60,13 +60,14 @@ jobs:
         commit-message: |
             standup: ${{ env.DATE }}
 
-            Fixes: ${{ steps.create.outputs.number }}
+            Fixes: \#${{ steps.create.outputs.number }}
         title: |
             standup: ${{ env.DATE }}
         body: |
             This is a PR body...
         labels: standup
         committer: "GitHub <noreply@github.com>"
+        author: "GitHub <noreply@github.com>"
         # assignees: one, two
         # reviewers: one, two
         # team-reviewers: one, two
