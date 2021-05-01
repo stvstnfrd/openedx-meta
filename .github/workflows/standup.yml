@@ -22,4 +22,9 @@ jobs:
             -H 'Accept: application/vnd.github.inertia-preview+json' \
             https://api.github.com/projects/columns/14068734/cards \
         ;
-# -H 'authorization: Bearer <TOKEN>' \
+    - uses: actions/checkout@v2
+    - run: pip install -r .github/requests.txt
+    - run: python3 .github/standup.py > ./standup.markdown
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: cat ./standup.markdown
