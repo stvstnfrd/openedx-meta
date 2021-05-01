@@ -78,8 +78,8 @@ class Board:
     def __init__(self):
         self.owner = GITHUB_OWNER
         self.repo = GITHUB_REPO
-        self.days = 3
-        self.days_ahead = 1
+        self.days = 5
+        self.days_ahead = 3
         self.columns = {
             'done': {
                 'id': 14068734,
