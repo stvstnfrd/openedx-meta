@@ -162,12 +162,13 @@ class Board:
 
     @property
     def title(self):
-        text = f"standup: {self.standup_time}"
+        timestamp = self.standup_time.date()
+        text = f"standup: {timestamp}"
         return text
 
     @property
     def title_as_markdown(self):
-        text = f"[standup: {self.title}](https://github.com/{self.owner}/{self.repo}-meta/issues?q=is%3Aissue+sort%3Aupdated-desc)"
+        text = f"[{self.title}](https://github.com/{self.owner}/{self.repo}-meta/issues?q=is%3Aissue+sort%3Aupdated-desc)"
         return text
 
     def __str__(self):
@@ -176,6 +177,7 @@ class Board:
             '---',
             f"title: '{self.title}'",
             f"assignees: {assignees}",
+            f"labels: standup",
             '---',
         ]
         lines.append(f"# {self.title_as_markdown}")
