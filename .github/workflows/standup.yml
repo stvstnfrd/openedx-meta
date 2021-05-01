@@ -53,12 +53,19 @@ jobs:
       run: |
           git remote set-url --push origin https://stvstnfrd:$GITHUB_TOKEN@github.com/stvstnfrd/openedx-meta.git
     - name: Create Pull Request
+      run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b standup/${{ env.DATE }} origin/master
+          git add .
+          git commit -m "standup: ${{ env.DATE }}"
+          git push
+    - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        branch: standup
-        branch-suffix: timestamp
+        branch: standup/${{ env.DATE }}
         commit-message: |
             "standup: ${{ steps.BASENAME.outputs.DATE }}"
         title: |
