@@ -71,7 +71,6 @@ When work is started:
 - automatically remove label: [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
 - automatically remove label: [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
 - automatically remove label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
-- automatically move issue to project list: [backlog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061509)
 - automatically move issue to project list: [sprint/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
 - automatically transition JIRA ticket "In Progress": [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
@@ -103,7 +102,6 @@ When a sprint is ended:
 ##### Daily
 
 When an interrupt occurs:
-- manually add issue to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
 - manually add issue to project list: [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 - manually assign issue to owner
 

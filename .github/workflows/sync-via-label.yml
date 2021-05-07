@@ -48,10 +48,6 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-project-card@v1
       with:
-        project-name: backlog
-        column-name: Doing
-    - uses: peter-evans/create-or-update-project-card@v1
-      with:
         project-name: sprint
         column-name: Doing
   workflow-todo:

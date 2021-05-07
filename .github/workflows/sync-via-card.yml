@@ -17,18 +17,6 @@ jobs:
         add-labels: 'todo'
         remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  backlog-doing:
-    if: github.event.project_card.column_id == 14061509
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      repository-projects: read
-    steps:
-    - uses: andymckay/labeler@978f846c4ca6299fd136f465b42c5e87aca28cac
-      with:
-        add-labels: 'progress'
-        remove-labels: 'done,invalid,todo,triage,wontfix'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
   backlog-done:
     if: github.event.project_card.column_id == 14061510
     runs-on: ubuntu-latest
