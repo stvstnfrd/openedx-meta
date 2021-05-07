@@ -29,7 +29,7 @@ jobs:
         add-labels: 'done'
         remove-labels: 'invalid,progress,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  sprint-todo:
+  worklog-todo:
     if: github.event.project_card.column_id == 14068697
     runs-on: ubuntu-latest
     permissions:
@@ -41,7 +41,7 @@ jobs:
         add-labels: 'todo'
         remove-labels: 'done,invalid,progress,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  sprint-doing:
+  worklog-doing:
     if: github.event.project_card.column_id == 14068727
     runs-on: ubuntu-latest
     permissions:
@@ -53,7 +53,7 @@ jobs:
         add-labels: 'progress'
         remove-labels: 'done,invalid,todo,triage,wontfix'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-  sprint-done:
+  worklog-done:
     if: github.event.project_card.column_id == 14068734
     runs-on: ubuntu-latest
     permissions:

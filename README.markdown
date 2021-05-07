@@ -26,7 +26,7 @@ _should_ be handled automatically.
 
 The following repository projects exist:
 - [backlog](https://github.com/stvstnfrd/openedx-meta/projects/1)
-- [sprint](https://github.com/stvstnfrd/openedx-meta/projects/2)
+- [worklog](https://github.com/stvstnfrd/openedx-meta/projects/2)
 
 Optionally, the repository can be connected to a JIRA board, presently:
 https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689
@@ -77,7 +77,7 @@ When work is started:
   [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
   [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically move issue to project list:
-  [sprint/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
+  [worklog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
 - automatically transition JIRA ticket "In Progress":
   [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
@@ -92,7 +92,7 @@ When work is finished:
   [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically move issue to project list:
   [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
-  [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
+  [worklog/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 - automatically close issue:
   [closed](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aissue+is%3Aclosed)
 - automatically close JIRA ticket:
@@ -105,17 +105,17 @@ When work is finished:
 When a sprint is started:
 - manually assign issue to owner
 - manually add issues to project list:
-  [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
+  [worklog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 
 When a sprint is ended:
 - manually archive project list:
-  [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
+  [worklog/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 
 ##### Daily
 
 When an interrupt occurs:
 - manually add issue to project list:
-  [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
+  [worklog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 - manually assign issue to owner
 
 ## Configuration

@@ -48,7 +48,7 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
     - uses: peter-evans/create-or-update-project-card@v1
       with:
-        project-name: sprint
+        project-name: worklog
         column-name: Doing
   workflow-todo:
     if: github.event.label.name == 'todo'
@@ -67,7 +67,7 @@ jobs:
         column-name: TODO
     - uses: peter-evans/create-or-update-project-card@v1
       with:
-        project-name: sprint
+        project-name: worklog
         column-name: TODO
   workflow-triage:
     if: github.event.label.name == 'triage'
@@ -86,7 +86,7 @@ jobs:
         column-name: TODO
     - uses: peter-evans/create-or-update-project-card@v1
       with:
-        project-name: sprint
+        project-name: worklog
         column-name: TODO
   workflow-wontfix:
     if: github.event.label.name == 'wontfix'
