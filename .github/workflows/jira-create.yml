@@ -23,7 +23,7 @@ jobs:
         project: CENG
         issuetype: Task
         summary: |
-          [PUBLIC] ${{ github.event.issue.title }}
+          [GH] ${{ github.event.issue.title }}
         description: |
           ${{ github.event.issue.description }}
           ---
@@ -31,8 +31,6 @@ jobs:
           Changes and comments made here are _not_ synced to Github.
           Public comments should be made directly to the Github Issue at
           ${{ github.event.issue.html_url }}
-          ---
-          ${{ toJSON(github.event.issue) }}
         # fields: '{"customfield_10171": "test"}'
     - name: Log created issue
       if: steps.use-jira.outputs.result
