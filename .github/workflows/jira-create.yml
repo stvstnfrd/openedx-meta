@@ -16,8 +16,14 @@ jobs:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    - uses: atlassian/gajira-create@master
+    - uses: atlassian/gajira-find-issue-key@master
       if: steps.use-jira.outputs.result
+      id: find
+      with:
+        string: ${{ github.event.issue.title }}
+        from: ''
+    - uses: atlassian/gajira-create@master
+      if: ${{ steps.use-jira.outputs.result && !steps.find.outputs.issue }}
       id: create
       with:
         project: CENG
@@ -33,7 +39,7 @@ jobs:
           ${{ github.event.issue.html_url }}
         # fields: '{"customfield_10171": "test"}'
     - name: Log created issue
-      if: steps.use-jira.outputs.result
+      if: ${{ steps.use-jira.outputs.result && !steps.find.outputs.issue }}
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
     - name: Link to JIRA ticket from Github Issue
       if: steps.use-jira.outputs.result
