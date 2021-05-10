@@ -23,7 +23,7 @@ jobs:
         project: CENG
         issuetype: Task
         summary: |
-          [PUBLIC] ${{ github.event.issue.title }}
+          [GH] ${{ github.event.issue.title }}
         description: |
           ${{ github.event.issue.description }}
           ---
