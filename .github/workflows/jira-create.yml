@@ -48,6 +48,6 @@ jobs:
             -X PATCH \
             -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.inertia-preview+json" \
-            --data '{"body": "${{ github.event.issue.body }}\n\nTracked-by: [${{ steps.create.outputs.issue }}](${{ secrets.JIRA_BASE_URL }}/browse/${{ steps.create.outputs.issue }})", "title": "${{ github.event.issue.title }} [${{ steps.create.outputs.issue }}]"}' \
+            --data '{"body": "${{ github.event.issue.body }}\n\nTracked-by: [${{ steps.create.outputs.issue || steps.find.outputs.issue }}](${{ secrets.JIRA_BASE_URL }}/browse/${{ steps.create.outputs.issue || steps.find.outputs.issue }})", "title": "${{ github.event.issue.title }} [${{ steps.create.outputs.issue || steps.find.outputs.issue }}]"}' \
             "https://api.github.com/repos/${{ github.event.repository.full_name }}/issues/${{ github.event.issue.number }}" \
         ;
