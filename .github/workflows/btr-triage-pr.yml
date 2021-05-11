@@ -1,0 +1,39 @@
+---
+name: Triage BTR:named-release PRs
+on:
+  pull_request:
+    types:
+    - opened
+    branches:
+    - open-release/*.master
+  pull_request_target:
+    types:
+    - opened
+    branches:
+    - open-release/*.master
+jobs:
+  btr-triage-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: lookup teams
+      id: teams
+      if: ${{ !github.event.pull_request.draft }}
+      uses: tspascoal/get-user-teams-membership@v1
+      with:
+        username: "${{ github.actor }}"
+        organization: edx  # ${{ github.repository_owner }}
+        team: openedx-ceng-test
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: approve PR
+      if: ${{ !github.event.pull_request.draft && steps.teams.outputs.isTeamMember }}
+      uses: andrewmusgrave/automatic-pull-request-review@0.0.5
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        event: APPROVE
+        body: ':+1:'
+    - name: label PR as auto-mergeable
+      if: ${{ !github.event.pull_request.draft && steps.teams.outputs.isTeamMember }}
+      uses: andymckay/labeler@1.0.2
+      with:
+        add-labels: 'automerge'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
