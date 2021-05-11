@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: use-jira
+      # yamllint disable rule:line-length
       run: echo '::set-output name=result::$(test -n ${{ secrets.JIRA_BASE_URL }} && echo 1)'
     - uses: atlassian/gajira-login@master
       if: steps.use-jira.outputs.result
@@ -43,6 +44,7 @@ jobs:
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
     - name: Link to JIRA ticket from Github Issue
       if: steps.use-jira.outputs.result
+      # yamllint disable rule:line-length
       run: |
         curl \
             -X PATCH \

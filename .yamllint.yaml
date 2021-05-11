@@ -1,0 +1,16 @@
+---
+ignore: |
+  .git/
+  node_modules/
+rules:
+  indentation:
+    indent-sequences: false
+    spaces: 2
+  truthy:
+    allowed-values:
+    - 'true'
+    - 'false'
+    - 'on'
+yaml-files:
+- '*.yaml'
+- '*.yml'
