@@ -1,3 +1,4 @@
+---
 # openedx-meta
 
 ## Purpose
@@ -25,8 +26,7 @@ _should_ be handled automatically.
 
 The following repository projects exist:
 - [backlog](https://github.com/stvstnfrd/openedx-meta/projects/1)
-- [sprint](https://github.com/stvstnfrd/openedx-meta/projects/2)
-- [standup](https://github.com/stvstnfrd/openedx-meta/projects/3)
+- [worklog](https://github.com/stvstnfrd/openedx-meta/projects/2)
 
 Optionally, the repository can be connected to a JIRA board, presently:
 https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689
@@ -36,8 +36,10 @@ https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689
 #### Create
 
 When issues are created:
-- automatically apply label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
-- automatically add issue to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
+- automatically apply label:
+  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically add issue to project list:
+  [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
 - automatically create a JIRA ticket to track this issue:
   [CENG/backlog](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG&view=planning&issueLimit=100)
 
@@ -68,25 +70,29 @@ We also flag potential "parking lot" discussions with the prefix:
 #### Update
 
 When work is started:
-- manually apply label: [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
-- automatically remove label: [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
-- automatically remove label: [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
-- automatically remove label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
-- automatically move issue to project list: [backlog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061509)
-- automatically move issue to project list: [sprint/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
-- automatically move issue to project list: [standup/Doing](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068727)
-- automatically transition JIRA ticket "In Progress": [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
+- manually apply label:
+  [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
+- automatically remove label:
+  [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
+  [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
+  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically move issue to project list:
+  [worklog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
+- automatically transition JIRA ticket "In Progress":
+  [CENG/Kanban](https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689&projectKey=CENG)
 
 #### Complete
 
 When work is finished:
-- manually apply label: [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
-- automatically remove label: [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
-- automatically remove label: [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
-- automatically remove label: [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
-- automatically move issue to project list: [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
-- automatically move issue to project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
-- automatically move issue to project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
+- manually apply label:
+  [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
+- automatically remove label:
+  [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
+  [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
+  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
+- automatically move issue to project list:
+  [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
+  [worklog/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 - automatically close issue:
   [closed](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aissue+is%3Aclosed)
 - automatically close JIRA ticket:
@@ -98,24 +104,19 @@ When work is finished:
 
 When a sprint is started:
 - manually assign issue to owner
-- manually add issues to project list: [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
+- manually add issues to project list:
+  [worklog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 
 When a sprint is ended:
-- manually archive project list: [sprint/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
+- manually archive project list:
+  [worklog/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
 
 ##### Daily
 
-When a day is started:
-- manually add issues to project list: [standup/TODO](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068716)
-
 When an interrupt occurs:
-- manually add issue to project list: [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
-- manually add issue to project list: [sprint/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
-- manually add issue to project list: [standup/TODO](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068716)
+- manually add issue to project list:
+  [worklog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068697)
 - manually assign issue to owner
-
-When a day is ended:
-- manually archive project list: [standup/Done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068734)
 
 ## Configuration
 
