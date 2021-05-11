@@ -1,0 +1,17 @@
+---
+name: Validate PR
+on:
+  pull_request:
+    types:
+    - opened
+    - reopened
+    - ready_for_review
+    - synchronized
+  push:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: pip install yamllint
+    - run: make ci
