@@ -6,6 +6,9 @@ members: stvstnfrd
 
 ## unreleased changes
 
+## v0.0.2
+
+
 ## v0.0.1
 
 ### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
