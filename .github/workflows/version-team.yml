@@ -26,6 +26,9 @@ jobs:
         export BRANCHNAME="team"
         echo "BRANCHNAME=${BRANCHNAME}" >> "${GITHUB_ENV}"
       id: BASENAME
+    - run: |
+        git config --global user.email 'noreply@github.com' \
+        && git config --global user.name 'GitHub'
     - run: make team TEAM_MEMBERS='${{ github.event.inputs.teamMembers }}' TEAM_NAME='${{ github.event.inputs.teamName }}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
