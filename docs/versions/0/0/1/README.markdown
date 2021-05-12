@@ -8,10 +8,10 @@ labels: standup
 
 ### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
 
-- [ ] [discover: find commit info available on PRs via GH API](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60994343)
 - [ ] [stvn: 1-on-1](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60993251)
-- [ ] [feat: record conference video](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60951398)
 - [ ] [feat: install XBlocks in devstack more easily](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60951445)
+- [ ] [discover: find commit info available on PRs via GH API](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60994343)
+- [ ] [feat: record conference video](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60951398)
 
 ## [done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068709)
 
