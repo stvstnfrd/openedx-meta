@@ -79,6 +79,8 @@ team: $(FILE_NEXT_TEAM)  ## Generate a new team formation
 .PHONY: sprint version_minor
 version_minor: sprint
 sprint: $(FILE_NEXT_SPRINT) $(FILE_NEXT_PLANNING)  ## Generate this "week's" sprint
+	$(MAKE) $(FILE_THIS_TEAM_CHANGELOG)
+	$(MAKE) $(FILE_THIS_CHANGELOG)
 	git add "$(DIR_VERSIONS)"
 	git commit -m "sprint: start new sprint: {DATESTAMP}"
 
