@@ -69,7 +69,7 @@ FILE_NEXT_PLANNING=$(DIR_VERSION_MINOR_NEXT)/0/README.markdown
 version_major: team
 team: $(FILE_NEXT_TEAM)  ## Generate a new team formation
 	git add "$(DIR_VERSION_MAJOR_NEXT)"
-	git commit -m "team: form new team: $(TEAM_MEMBERS)"
+	git commit -m "team: form new team: $(TEAM_NAME), ($(TEAM_MEMBERS))"
 
 .PHONY: sprint version_minor
 version_minor: sprint
