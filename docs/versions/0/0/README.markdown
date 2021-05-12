@@ -8,13 +8,11 @@ labels: standup
 
 ### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
 
+- [ ] [task: Flesh out stories for XBlock improvements [CENG-48]](https://github.com/stvstnfrd/openedx-meta/issues/122)
+- [ ] [review: Added new discussion providers and features [CENG-74]](https://github.com/stvstnfrd/openedx-meta/issues/119)
 - [ ] [discuss: Create git tags for version bumps to labxchange-xblocks](https://github.com/stvstnfrd/openedx-meta/issues/106)
 - [ ] [feat: install XBlocks in devstack more easility](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60951445)
 - [ ] [feat: record conference video](https://github.com/stvstnfrd/openedx-meta/projects/3#card-60951398)
 
 ## [done](https://github.com/stvstnfrd/openedx-meta/projects/3#column-14068709)
 
-### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
-
-- [x] [task: Flesh out stories for XBlock improvements [CENG-48]](https://github.com/stvstnfrd/openedx-meta/issues/122)
-- [x] [review: Added new discussion providers and features [CENG-74]](https://github.com/stvstnfrd/openedx-meta/issues/119)
