@@ -1,0 +1,43 @@
+---
+name: Create a new sprint
+on:
+  workflow_dispatch:
+jobs:
+  create-new-team:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: read
+    steps:
+    - uses: actions/checkout@v2
+    - run: pip install -r .github/requirements.txt
+    - run: |
+        export BRANCHNAME="sprint"
+        echo "BRANCHNAME=${BRANCHNAME}" >> "${GITHUB_ENV}"
+      id: BASENAME
+    - run: |
+        git config --global user.email 'noreply@github.com' \
+        && git config --global user.name 'GitHub'
+    - run: make sprint
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        token: "${{ secrets.GITHUB_TOKEN }}"
+        branch: ${{ env.BRANCHNAME }}
+        commit-message: |
+            sprint: start a new sprint
+        title: |
+            sprint: start a new sprint
+        body: |
+            This is a new sprint.
+        committer: "GitHub <noreply@github.com>"
+        author: "GitHub <noreply@github.com>"
+        # reviewers: ${{ github.event.inputs.teamMembers }}
+        # assignees: one, two
+        # team-reviewers: one, two
+        # milestone: mklasdfas
