@@ -1,0 +1,50 @@
+---
+name: Create a new team
+on:
+  workflow_dispatch:
+    inputs:
+      teamMembers:
+        description: 'Team member Github IDs, space-separated'
+        required: true
+        default: 'stvstnfrd'
+      teamName:
+        description: 'Team Name'
+jobs:
+  create-new-team:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: read
+    steps:
+    - run: |
+        echo "Team Members: ${{ github.event.inputs.teamMembers }}"
+        echo "Team Name: ${{ github.event.inputs.teamName }}"
+    - uses: actions/checkout@v2
+    - run: pip install -r .github/requirements.txt
+    - run: |
+        export BRANCHNAME="team"
+        echo "BRANCHNAME=${BRANCHNAME}" >> "${GITHUB_ENV}"
+      id: BASENAME
+    - run: make team TEAM_MEMBERS='${{ github.event.inputs.teamMembers }}' TEAM_NAME='${{ github.event.inputs.teamName }}'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        token: "${{ secrets.GITHUB_TOKEN }}"
+        branch: ${{ env.BRANCHNAME }}
+        commit-message: |
+            team: form a new team, ${{ github.event.inputs.teamName }} (${{ github.event.inputs.teamMembers }})
+        title: |
+            team: form a new team, ${{ github.event.inputs.teamName }} (${{ github.event.inputs.teamMembers }})
+        body: |
+            This is a new team.
+        committer: "GitHub <noreply@github.com>"
+        author: "GitHub <noreply@github.com>"
+        reviewers: ${{ github.event.inputs.teamMembers }}
+        # assignees: one, two
+        # team-reviewers: one, two
+        # milestone: mklasdfas
