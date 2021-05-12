@@ -29,6 +29,9 @@ jobs:
     - run: make team TEAM_MEMBERS='${{ github.event.inputs.teamMembers }}' TEAM_NAME='${{ github.event.inputs.teamName }}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        git config --global user.email 'noreply@github.com' \
+        && git config --global user.name 'GitHub'
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       env:
