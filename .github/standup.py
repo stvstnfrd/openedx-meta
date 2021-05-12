@@ -82,7 +82,7 @@ def main():
     if len(sys.argv) > 1:
         display = sys.argv[1]
     if display == 'standup':
-        board = Board(days=1, days_ahead=1)
+        board = Board(days=1, days_ahead=0)
         print(board)
     elif display == 'sprint':
         board = Board()
