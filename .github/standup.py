@@ -3,6 +3,8 @@
 Perform standup
 """
 from datetime import datetime
+from datetime import time
+from datetime import timezone
 from datetime import timedelta
 import os
 import sys
@@ -151,14 +153,25 @@ class Board:
         """
         Calculate the standup window stop time
         """
-        now = datetime.now()
-        start = datetime(
-            year=now.year,
-            month=now.month,
-            day=now.day,
-            hour=12,
-        ) + timedelta(days=self.days_ahead)
-        return start
+        do_yesterday = True
+        now = datetime.now(timezone.utc)
+        standup_at = time.fromisoformat('15:00:00')
+        standup_today = datetime(
+            now.year,
+            now.month,
+            now.day,
+            standup_at.hour,
+            standup_at.minute,
+            standup_at.second,
+            tzinfo=timezone.utc,
+        )
+        standup_tomorrow = standup_today + timedelta(days=1)
+        standup_has_already_happened_today = now > standup_today
+        if standup_has_already_happened_today and not do_yesterday:
+            standup_next = standup_tomorrow
+        else:
+            standup_next = standup_today
+        return standup_next
 
     @property
     def standup_time_window_open(self):
@@ -358,7 +371,7 @@ class Card:
         text = card['note']
         author = card['creator']['login']
         updated_at = card['updated_at'][:-1]
-        updated_at = datetime.fromisoformat(updated_at)
+        updated_at = datetime.fromisoformat(updated_at + '+00:00')
         if 'content_url' in card:
             url = card['content_url']
             issue_number = int(url.split('/')[-1])
@@ -385,7 +398,7 @@ class Card:
         if not author:
             author = issue['user']['login']
         updated_at = issue['updated_at'][:-1]
-        updated_at = datetime.fromisoformat(updated_at)
+        updated_at = datetime.fromisoformat(updated_at + '+00:00')
         text = issue['title']
         url = issue['html_url']
         instance = cls(author, text, labels, url, updated_at=updated_at)
