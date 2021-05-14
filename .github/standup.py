@@ -83,16 +83,27 @@ def main():
     display = 'standup'
     if len(sys.argv) > 1:
         display = sys.argv[1]
+    board = Board(days=1)
     if display == 'standup':
-        board = Board(days=1, days_ahead=0)
-        print(board)
+        print(board.get_standup())
     elif display == 'sprint':
-        board = Board()
-        print(board)
+        print(board.get_retro())
     else:
         print('unsupported', display)
     # print(board.changelog)
     # board.standup()
+
+
+def get_cards_done(column_id):
+    """
+    Fetch the listo of done cards
+    """
+    cards_done = get(f"projects/columns/{column_id}/cards")
+    for card in cards_done:
+        entry = Card.from_card(card)
+        if not entry:
+            continue
+        yield entry
 
 
 class Board:
@@ -100,11 +111,10 @@ class Board:
     Represent a Github Project board
     """
 
-    def __init__(self, days=0, days_ahead=0):
+    def __init__(self, days=0):
         self.owner = GITHUB_OWNER
         self.repo = GITHUB_REPO
         self.days = days
-        self.days_ahead = days_ahead
         self.columns = {
             'done': {
                 'id': 14068709,
@@ -123,7 +133,7 @@ class Board:
             },
         }
         for key, column in self.columns.items():
-            for card in self.get_cards_done(column['id'], key):
+            for card in get_cards_done(column['id']):
                 self.columns[key]['cards'].append(card)
                 if not card.author in self.columns[key]['authors']:
                     self.columns[key]['authors'][card.author] = []
@@ -181,22 +191,6 @@ class Board:
         period = timedelta(days=self.days)
         stop = self.standup_time - period
         return stop
-
-    def get_cards_done(self, column_id, key):
-        """
-        Fetch the listo of done cards
-        """
-        cards_done = get(f"projects/columns/{column_id}/cards")
-        for card in cards_done:
-            entry = Card.from_card(card)
-            if not entry:
-                continue
-            if not self.days:
-                yield entry
-            if key != 'done':
-                yield entry
-            if entry.is_in_timespan(self.standup_time_window_open, self.standup_time):
-                yield entry
 
     def standup(self):
         """
@@ -259,6 +253,46 @@ class Board:
         return text
 
     def __str__(self):
+        return self.get_standup()
+
+    def get_author_and_cards_filtered(self, column=None, filter_today_only=False):
+        """
+        Filter cards based on date
+        """
+        if column:
+            column_keys = [column,]
+        else:
+            column_keys = ['todo', 'doing',]
+        filtered_cards = {}
+        for column_key in column_keys:
+            for author, cards in self.columns[column_key]['authors'].items():
+                for card in cards:
+                    if filter_today_only and not card.is_in_timespan(
+                            self.standup_time_window_open,
+                            self.standup_time,
+                    ):
+                        continue
+                    if author not in filtered_cards:
+                        filtered_cards[author] = []
+                    filtered_cards[author].append(card)
+        return filtered_cards
+
+    def get_standup(self):
+        """
+        Generate a standup changelog
+        """
+        return self.get_changelog(filter_today_only=True)
+
+    def get_retro(self):
+        """
+        Generate a retro changelog
+        """
+        return self.get_changelog(filter_today_only=False)
+
+    def get_changelog(self, filter_today_only=False):
+        """
+        Generate a changelog
+        """
         if not self.is_standup_today:
             return ''
         assignees = ', '.join(self.participants)
@@ -269,14 +303,7 @@ class Board:
             '---',
         ]
         lines.append(f"# {self.title_as_markdown}")
-        cards = dict(self.columns['todo']['authors'])
-        for key, value in self.columns['doing']['authors'].items():
-            if key not in cards:
-                cards[key] = value
-            else:
-                cards[key] += value
-        for key in cards:
-            cards[key] = set(cards[key])
+        cards = self.get_author_and_cards_filtered()
         marker = ' '
         lines.append('\n## unreleased changes')
         for author, entries in cards.items():
@@ -284,11 +311,16 @@ class Board:
             lines.append(f"\n### [@{author}]({url})\n")
             for entry in entries:
                 lines.append(f"- [{marker}] {entry.text_as_link}")
-
-        cards = self.columns['done']['authors']
+        cards = self.get_author_and_cards_filtered(
+            column='done',
+            filter_today_only=filter_today_only,
+        )
         marker = 'x'
         column_id = self.columns['done']['id']
-        url = f"https://github.com/{self.owner}/{self.repo}/projects/3#column-{column_id}"
+        url = (
+            f"https://github.com/{self.owner}/{self.repo}/"
+            f"projects/3#column-{column_id}"
+        )
         lines.append(f"\n## [done]({url})")
         for author, entries in cards.items():
             url = f"https://github.com/{self.owner}/{self.repo}/issues/assigned/{author}"
