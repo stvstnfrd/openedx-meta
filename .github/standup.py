@@ -83,7 +83,7 @@ def main():
     display = 'standup'
     if len(sys.argv) > 1:
         display = sys.argv[1]
-    board = Board(days=1)
+    board = Board(days=1, display=display)
     if display == 'standup':
         print(board.get_standup())
     elif display == 'sprint':
@@ -111,10 +111,11 @@ class Board:
     Represent a Github Project board
     """
 
-    def __init__(self, days=0):
+    def __init__(self, days=0, display=None):
         self.owner = GITHUB_OWNER
         self.repo = GITHUB_REPO
         self.days = days
+        self.display = display or 'standup'
         self.columns = {
             'done': {
                 'id': 14068709,
@@ -239,7 +240,7 @@ class Board:
         Return the title, plaintext
         """
         timestamp = self.standup_time.date()
-        text = f"standup: {timestamp}"
+        text = f"{self.display}: {timestamp}"
         return text
 
     @property

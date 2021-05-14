@@ -99,7 +99,7 @@ $(FILE_THIS_CHANGELOG): $(CHANGELOG_FILES_ALL)
 	| sed '/---/,$$d' \
 	> tmp.md
 	@echo '---' >> tmp.md
-	@echo '# changelog' >> tmp.md
+	@echo '# team' >> tmp.md
 	@echo >> tmp.md
 	@echo "## unreleased changes" >> tmp.md
 	@echo >> tmp.md
@@ -122,7 +122,7 @@ $(FILE_THIS_TEAM_CHANGELOG): $(CHANGELOG_FILES_TEAM)
 	| sed '/---/,$$d' \
 	> tmp.md
 	@echo '---' >> tmp.md
-	@echo '# changelog' >> tmp.md
+	@echo '# squad' >> tmp.md
 	@echo >> tmp.md
 	@echo "## unreleased changes" >> tmp.md
 	@echo >> tmp.md

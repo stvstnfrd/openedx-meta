@@ -1,5 +1,5 @@
 ---
-# changelog
+# team
 
 ## unreleased changes
 
