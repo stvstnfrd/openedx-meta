@@ -3,6 +3,12 @@
 
 ## unreleased changes
 
+## v0.0.4
+
+### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
+
+- [x] [discuss: grant Github admin/repo rights to stvn [CENG-82]](https://github.com/stvstnfrd/openedx-meta/issues/142)
+
 ## v0.0.3
 
 ### [@stvstnfrd](https://github.com/stvstnfrd/openedx-meta/issues/assigned/stvstnfrd)
