@@ -397,7 +397,8 @@ class Card:
             author = author['login']
         if not author:
             author = issue['user']['login']
-        updated_at = issue['updated_at'][:-1]
+        updated_at = issue['closed_at'] or issue['updated_at'] or issue['created_at']
+        updated_at = updated_at[:-1]
         updated_at = datetime.fromisoformat(updated_at + '+00:00')
         text = issue['title']
         url = issue['html_url']
