@@ -2,7 +2,7 @@ title: 'standup: 2021-05-14'
 assignees: stvstnfrd
 labels: standup
 ---
-# [standup: 2021-05-14](https://github.com/stvstnfrd/openedx-meta-meta/issues?q=is%3Aissue+sort%3Aupdated-desc)
+# [sprint: 2021-05-14](https://github.com/stvstnfrd/openedx-meta-meta/issues?q=is%3Aissue+sort%3Aupdated-desc)
 
 ## unreleased changes
 

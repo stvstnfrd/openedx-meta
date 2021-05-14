@@ -2,7 +2,7 @@ name: 'Team Awesome'
 members: stvstnfrd
 
 ---
-# changelog
+# squad
 
 ## unreleased changes
 
