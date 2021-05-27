@@ -36,8 +36,6 @@ https://openedx.atlassian.net/secure/RapidBoard.jspa?rapidView=689
 #### Create
 
 When issues are created:
-- automatically apply label:
-  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically add issue to project list:
   [backlog/TODO](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061503)
 - automatically create a JIRA ticket to track this issue:
@@ -75,7 +73,6 @@ When work is started:
 - automatically remove label:
   [done](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aclosed+is%3Aissue+label%3Adone)
   [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
-  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically move issue to project list:
   [worklog/Doing](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068701)
 - automatically transition JIRA ticket "In Progress":
@@ -89,7 +86,6 @@ When work is finished:
 - automatically remove label:
   [progress](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Aprogress)
   [todo](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atodo)
-  [triage](https://github.com/stvstnfrd/openedx-meta/issues?q=is%3Aopen+is%3Aissue+label%3Atriage)
 - automatically move issue to project list:
   [backlog/Done](https://github.com/stvstnfrd/openedx-meta/projects/1#column-14061510)
   [worklog/Done](https://github.com/stvstnfrd/openedx-meta/projects/2#column-14068709)
